@@ -2,48 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : ScriptableObject
+public enum ClassType
 {
-    public string name;
-    public Sprite icon;
-
-    public virtual void PrimaryAttack() 
-    {
-        Debug.Log("Fire!");
-    }
+    Mage,
+    Bruiser,
+    Ranger
 }
 
-[CreateAssetMenu(menuName = "Weapons/Guns/Submachine")]
-public class SubmachineGun : Weapon
+interface IAttack
 {
-    public float fireRate;
-    public float ammunition;
-
-    public override void PrimaryAttack() {
-        Debug.Log("Shoot!");
-    }
+    public virtual void PrimaryAttack(Transform player) { }
+    public virtual void ChargeAttack(Transform player) { }
+    public virtual void SecondaryAttack(Transform player) { }
 }
 
-public class Staff : Weapon
-{
-    public GameObject particles;
-}
 
-[CreateAssetMenu(menuName = "Weapons/Staff/FireStaff")]
-public class FireStaff : Staff
+public class Weapon : Item, IAttack
 {
-    public override void PrimaryAttack()
-    {
-        Debug.Log("Cast Fire Magic");
-    }
-}
-[CreateAssetMenu(menuName = "Weapons/Staff/IceStaff")]
-public class IceStaff : Staff
-{
-    public float fireRate;
+    public ClassType classType;
 
-    public override void PrimaryAttack()
-    {
-        Debug.Log("Cast Ice Magic");
-    }
+    public virtual void PrimaryAttack(Transform player) { MonoBehaviour.print("Primary Attack"); }
+    public virtual void ChargeAttack(Transform player) { MonoBehaviour.print("Charge Attack"); }
+    public virtual void SecondaryAttack(Transform player) { MonoBehaviour.print("Secondary Attack"); }
 }
