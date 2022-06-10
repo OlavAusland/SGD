@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour
 {
     public Item item;
     public Image image { get { if (transform.childCount > 0) { return transform.GetChild(0).GetComponent<Image>(); } else { return null; } } }
+    public ItemType canHold;
 
 
     public void Start() { UpdateSlot(); }

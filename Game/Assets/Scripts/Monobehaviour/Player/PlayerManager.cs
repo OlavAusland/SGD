@@ -14,10 +14,11 @@ public class PlayerManager : MonoBehaviour
     
     public void Update()
     {
-        Movement();
-        Combat();
-        if (Input.GetKeyDown(KeyCode.Escape)) { ToggleInventory(); }
+        if(weapon){Combat();}
+        if (Input.GetKeyDown(KeyCode.Tab)) { ToggleInventory(); }
     }
+
+    public void FixedUpdate(){Movement();}
     
     public void Movement()
     {
@@ -51,8 +52,9 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Item")) {
-            inventoryManager.AddItem(other.GetComponent<ItemInfo>().item);
-            Destroy(other.gameObject);
+            if(inventoryManager.AddItem(other.GetComponent<ItemInfo>().item)){
+                Destroy(other.gameObject);
+            }
         }
     }
 }
