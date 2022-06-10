@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerManager))]
 public class PlayerCombat : MonoBehaviour
 {
+    public static PlayerCombat instance;
+
+    SpriteRenderer sr { get { return transform.GetChild(0).GetComponent<SpriteRenderer>(); } }
     PlayerManager pm { get { return GetComponent<PlayerManager>(); } }
     public Transform weaponTransform;
 
+
     public void Update(){if(pm.weapon){Rotate();}}
 
-    void FaceMouse(){ weaponTransform.right = Direction();}
+    public void SetWeapon(Sprite sprite){sr.sprite = sprite;}
 
     Vector2 Direction()
     {

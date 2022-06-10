@@ -17,4 +17,4 @@ MonoBehaviour:
   itemType: 0
   rotationOffset: 0
   classType: 0
-  projectile: {fileID: 5987545789369420806, guid: 1e7038722b5947b4991028e0f0b38e5a, type: 3}
+  ability: {fileID: 11400000, guid: 09e9f0348d40fac41b595102fc40569a, type: 2}

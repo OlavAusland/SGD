@@ -21,8 +21,9 @@ public class Weapon : Item, IAttack
 {
     public int rotationOffset;
     public ClassType classType;
+    public Ability ability;
 
-    public virtual void PrimaryAttack(Transform player) { MonoBehaviour.print("Primary Attack"); }
+    public virtual void PrimaryAttack(Transform player) { ability.Activate(player); }
     public virtual void ChargeAttack(Transform player) { MonoBehaviour.print("Charge Attack"); }
     public virtual void SecondaryAttack(Transform player) { MonoBehaviour.print("Secondary Attack"); }
 }

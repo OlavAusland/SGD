@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerCombat))]
 public class PlayerManager : MonoBehaviour
 {
     public Weapon weapon;
     public List<GameObject> inventory;
     public InventoryManager inventoryManager;
+    public PlayerCombat playerCombat { get {return GetComponent<PlayerCombat>();} }
     
 
     public float speed = 12f;
@@ -27,8 +29,20 @@ public class PlayerManager : MonoBehaviour
 
     public void Combat()
     {
-        if (Input.GetMouseButtonDown(0)){ weapon.PrimaryAttack(this.transform); }
-        else if(Input.GetMouseButtonDown(1)){ weapon.SecondaryAttack(this.transform); }
+        if(weapon.ability.timer <= 0){
+            if (Input.GetMouseButtonDown(0)){ weapon.PrimaryAttack(this.transform); StartCoroutine(Cooldown());}
+            else if(Input.GetMouseButtonDown(1)){ weapon.SecondaryAttack(this.transform); }
+        }
+    }
+
+    public IEnumerator Cooldown() {
+        var startTime = Time.time;
+
+        while (weapon.ability.timer > 0)
+        {
+            weapon.ability.timer -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     public void ToggleInventory(){ 

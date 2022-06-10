@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20df7e052d0b9d0489a4773bb5f9e636, type: 3}
-  m_Name: Sword
+  m_Name: Scythe
   m_EditorClassIdentifier: 
-  name: Cloud Buster
-  icon: {fileID: 21300000, guid: 5a6c1c8bfa619144b82f3ef14b408615, type: 3}
+  name: Scythe
+  icon: {fileID: 21300000, guid: a261cc0f73719644c9d5b5472061410b, type: 3}
   itemType: 0
   rotationOffset: 0
   classType: 1
-  ability: {fileID: 11400000, guid: e645f5e9e80e87d40a023479ee1c7765, type: 2}
+  ability: {fileID: 0}

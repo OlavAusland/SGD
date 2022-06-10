@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 
 public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public PlayerManager player;
+    public PlayerManager pm;
     public List<InventorySlot> slots = new List<InventorySlot>();
     public List<InventorySlot> toolbar = new List<InventorySlot>(3);
 
@@ -131,13 +131,15 @@ public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 if(toolbar[i-1].item != null){
                     equippedItem = toolbar[i-1].item;
                     if(equippedItem.itemType == ItemType.Weapon){
-                        player.weapon = equippedItem as Weapon;
+                        pm.weapon = equippedItem as Weapon;
+                        pm.playerCombat.SetWeapon(pm.weapon.icon);
                     }
                     else if(equippedItem.itemType == ItemType.Consumable){}
                 }
                 else{
                     equippedItem = null;
-                    player.weapon = null;
+                    pm.weapon = null;
+                    pm.playerCombat.SetWeapon(null);
                 }
             }
         }

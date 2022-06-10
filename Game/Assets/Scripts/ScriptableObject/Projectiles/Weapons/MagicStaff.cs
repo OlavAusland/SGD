@@ -5,12 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Weapon/Mage/Staff")]
 public class MagicStaff : Weapon
 {
-    public GameObject projectile;
-
-    public override void PrimaryAttack(Transform player)
-    {
-        GameObject GO = Instantiate(projectile, player.position, Quaternion.identity);
-        GO.transform.right = Direction(player);
+    public override void PrimaryAttack(Transform caller){
+        ability.Activate(caller);
     }
 
     Vector2 Direction(Transform center)
