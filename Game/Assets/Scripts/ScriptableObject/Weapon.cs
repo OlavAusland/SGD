@@ -19,6 +19,7 @@ interface IAttack
 
 public class Weapon : Item, IAttack
 {
+    public int rotationOffset;
     public ClassType classType;
 
     public virtual void PrimaryAttack(Transform player) { MonoBehaviour.print("Primary Attack"); }

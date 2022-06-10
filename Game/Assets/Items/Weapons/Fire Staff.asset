@@ -15,5 +15,6 @@ MonoBehaviour:
   name: 
   icon: {fileID: 21300000, guid: 88a9002441efeef40b6e6b0f57388b06, type: 3}
   itemType: 0
+  rotationOffset: 0
   classType: 0
   projectile: {fileID: 5987545789369420806, guid: 1e7038722b5947b4991028e0f0b38e5a, type: 3}

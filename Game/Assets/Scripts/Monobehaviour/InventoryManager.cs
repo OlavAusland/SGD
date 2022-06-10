@@ -1,3 +1,6 @@
+using System.Data;
+using System.Runtime.CompilerServices;
+using System.Diagnostics.Tracing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,6 +68,25 @@ public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                             item.SetParent(eventData.pointerEnter.transform);
                         }
                     }
+                }else if(eventData.pointerEnter.transform.CompareTag("InventoryItem")){
+                    if(true){
+                        Transform firstParent = item.parent;
+                        Transform secondParent = eventData.pointerEnter.transform.parent;
+
+                        Item firstItem = firstParent.GetComponent<InventorySlot>().item;
+                        Item secondItem = secondParent.GetComponent<InventorySlot>().item;
+
+                        if(SlotCanHoldItem(firstItem, secondParent.GetComponent<InventorySlot>())){
+                            if(SlotCanHoldItem(secondItem, firstParent.GetComponent<InventorySlot>())){
+                                firstParent.GetComponent<InventorySlot>().item = secondItem;
+                                secondParent.GetComponent<InventorySlot>().item = firstItem;
+                                item.SetParent(secondParent);
+                                eventData.pointerEnter.transform.SetParent(firstParent);
+                                eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                            }
+                        }
+                    }
+
                 }
             }
             else
@@ -98,7 +120,9 @@ public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         return false;
 
     }
-    private void Swap(Transform other){}
+    private void Swap(Transform other){
+        
+    }
 
     private void EquipItem(){
         for(int i = 1; i < toolbar.Count + 1; i++)
