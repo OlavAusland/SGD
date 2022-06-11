@@ -12,7 +12,6 @@ public enum ClassType
 interface IAttack
 {
     public virtual void PrimaryAttack(Transform player) { }
-    public virtual void ChargeAttack(Transform player) { }
     public virtual void SecondaryAttack(Transform player) { }
 }
 
@@ -21,9 +20,11 @@ public class Weapon : Item, IAttack
 {
     public int rotationOffset;
     public ClassType classType;
-    public Ability ability;
 
-    public virtual void PrimaryAttack(Transform player) { ability.Activate(player); }
-    public virtual void ChargeAttack(Transform player) { MonoBehaviour.print("Charge Attack"); }
-    public virtual void SecondaryAttack(Transform player) { MonoBehaviour.print("Secondary Attack"); }
+    [Header("Abilities")]
+    public Ability primary;
+    public Ability secondary;
+
+    public virtual void PrimaryAttack(Transform player) { primary.Activate(player); }
+    public virtual void SecondaryAttack(Transform player) { secondary.Activate(player); }
 }

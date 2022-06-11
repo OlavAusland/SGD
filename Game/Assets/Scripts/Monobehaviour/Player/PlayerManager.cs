@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 [RequireComponent(typeof(PlayerCombat))]
 public class PlayerManager : MonoBehaviour
 {
     public Weapon weapon;
+    public float primaryCD;
+    public float secondaryCD;
+
+    public Image primaryAbility;
+    public Image secondaryAbility;
+
     public List<GameObject> inventory;
     public InventoryManager inventoryManager;
     public PlayerCombat playerCombat { get {return GetComponent<PlayerCombat>();} }
@@ -18,6 +27,14 @@ public class PlayerManager : MonoBehaviour
     {
         if(weapon){Combat();}
         if (Input.GetKeyDown(KeyCode.Tab)) { ToggleInventory(); }
+        if(primaryCD > 0){
+            primaryCD -= Time.deltaTime;
+            primaryAbility.fillAmount = primaryCD / weapon.primary.cooldown;
+        }
+        if(secondaryCD > 0){
+            secondaryCD -= Time.deltaTime;
+            secondaryAbility.fillAmount = secondaryCD / weapon.secondary.cooldown;
+        }
     }
 
     public void FixedUpdate(){Movement();}
@@ -29,18 +46,35 @@ public class PlayerManager : MonoBehaviour
 
     public void Combat()
     {
-        if(weapon.ability.timer <= 0){
-            if (Input.GetMouseButtonDown(0)){ weapon.PrimaryAttack(this.transform); StartCoroutine(Cooldown());}
-            else if(Input.GetMouseButtonDown(1)){ weapon.SecondaryAttack(this.transform); }
+        if(weapon.primary)
+        {
+            if (Input.GetMouseButtonDown(0) && primaryCD <= 0)
+            { 
+                weapon.PrimaryAttack(this.transform);
+                primaryCD = weapon.primary.cooldown;
+                //StartCoroutine(Cooldown(primaryCD));
+            }
+
         }
+        if(weapon.secondary)
+        {
+            if(Input.GetMouseButtonDown(1) && secondaryCD <= 0)
+            { 
+                weapon.SecondaryAttack(this.transform); 
+                secondaryCD = weapon.secondary.cooldown;
+                //StartCoroutine(Cooldown(secondaryCD));
+            }
+        }
+        
     }
 
-    public IEnumerator Cooldown() {
-        var startTime = Time.time;
-
-        while (weapon.ability.timer > 0)
+    public IEnumerator Cooldown(float cd)
+    {
+        print("weapon cooldown");
+        while(cd > 0)
         {
-            weapon.ability.timer -= Time.deltaTime;
+            print(cd);
+            cd = cd - Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }
@@ -48,6 +82,15 @@ public class PlayerManager : MonoBehaviour
     public void ToggleInventory(){ 
         foreach(GameObject ui in inventory){
             ui.SetActive(!ui.activeSelf);
+        }
+    }
+
+    public void FlipSprite(){
+        if(rb.velocity.x > 0){
+            transform.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if(rb.velocity.x < 0){
+            transform.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 

@@ -5,5 +5,4 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Sword", menuName = "Weapon/Bruiser/Sword")]
 public class Sword : Weapon 
 {
-
 }

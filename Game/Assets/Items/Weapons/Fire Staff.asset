@@ -17,4 +17,5 @@ MonoBehaviour:
   itemType: 0
   rotationOffset: 0
   classType: 0
-  ability: {fileID: 11400000, guid: 09e9f0348d40fac41b595102fc40569a, type: 2}
+  primary: {fileID: 11400000, guid: 09e9f0348d40fac41b595102fc40569a, type: 2}
+  secondary: {fileID: 0}

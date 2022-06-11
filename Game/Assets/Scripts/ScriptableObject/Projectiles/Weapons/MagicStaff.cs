@@ -6,7 +6,8 @@ using UnityEngine;
 public class MagicStaff : Weapon
 {
     public override void PrimaryAttack(Transform caller){
-        ability.Activate(caller);
+        primary.Activate(caller);
+
     }
 
     Vector2 Direction(Transform center)

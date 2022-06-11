@@ -15,7 +15,6 @@ public class DefaultRangeAbility : Ability {
             obj.GetComponent<ProjectileManager>().projectile = this.projectile;
             GameObject GO = Instantiate(obj, caller.position, Quaternion.identity);
         }
-        timer = cooldown;
     }
 
     private Vector2 Direction(Transform caller)

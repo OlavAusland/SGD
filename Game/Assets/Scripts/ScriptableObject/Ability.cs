@@ -22,11 +22,14 @@ public class Ability : ScriptableObject
     public Sprite icon;
     public AbilityType type;
     public float cooldown;
-    public float timer;
 
 
-    public virtual void Activate(Transform caller){
-        MonoBehaviour.print("Attack");
-        timer = cooldown;
+    public virtual void Activate(Transform caller){}
+
+    protected Vector2 Direction(Transform center)
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePosition - (Vector2)center.position).normalized;
+        return direction;
     }
 }
