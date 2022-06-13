@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +17,17 @@ interface IAttack
 }
 
 
-public class Weapon : Item, IAttack
+[System.Serializable]
+public class AbilityDict {
+    public string name;
+    public KeyCode key;
+    public Ability ability;
+}
+
+public class Weapon : Item
 {
     public int rotationOffset;
     public ClassType classType;
 
-    [Header("Abilities")]
-    public Ability primary;
-    public Ability secondary;
-
-    public virtual void PrimaryAttack(Transform player) { primary.Activate(player); }
-    public virtual void SecondaryAttack(Transform player) { secondary.Activate(player); }
+    public List<AbilityDict> abilities;
 }

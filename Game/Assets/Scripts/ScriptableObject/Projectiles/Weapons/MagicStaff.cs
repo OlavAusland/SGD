@@ -5,10 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Weapon/Mage/Staff")]
 public class MagicStaff : Weapon
 {
-    public override void PrimaryAttack(Transform caller){
-        primary.Activate(caller);
-
-    }
 
     Vector2 Direction(Transform center)
     {

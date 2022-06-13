@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +22,11 @@ public class InventorySlot : MonoBehaviour
                 itemObject.tag = "InventoryItem";
                 itemObject.transform.SetParent(transform);
                 itemObject.AddComponent<Image>().sprite = item.icon;
-                itemObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 75);
+                itemObject.AddComponent<AspectRatioFitter>();
+                itemObject.GetComponent<AspectRatioFitter>().aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+                itemObject.GetComponent<AspectRatioFitter>().aspectRatio = 1;
                 itemObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
+                itemObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             }
         }
     }

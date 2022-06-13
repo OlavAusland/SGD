@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: MeleeThrow
   m_EditorClassIdentifier: 
   _name: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 13e5f9628c3acc346abdb1032fde7dc4, type: 3}
   type: 0
+  key: 0
   cooldown: 2
   curve:
     serializedVersion: 2

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d570b179a6eb7bd4682c6b1502ea8865, type: 3}
-  m_Name: Default
+  m_Name: Iceball Of Doom
   m_EditorClassIdentifier: 
-  _name: Fireball Of Doom
-  icon: {fileID: 21300000, guid: 88a5fa4099893b84eb3e584856bcaf00, type: 3}
+  _name: Iceball Of Doom
+  icon: {fileID: 21300000, guid: 084123291bfb4bf4ba11b1a70603e4a6, type: 3}
   type: 0
-  cooldown: 1
-  projectile: {fileID: 11400000, guid: b729d87942b7f4f49b36a666f11189f5, type: 2}
-  instances: 2
+  cooldown: 0.2
+  projectile: {fileID: 11400000, guid: fef2f37dddafded4287d534d393096ca, type: 2}
+  instances: 1

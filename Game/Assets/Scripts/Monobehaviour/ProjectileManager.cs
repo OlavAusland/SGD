@@ -14,4 +14,12 @@ public class ProjectileManager : MonoBehaviour
         StartCoroutine(projectile.Decay(this.transform));
         projectile.Move(rb, this.transform);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.transform.CompareTag("Enemy")){
+            projectile.OnHit(other.transform);
+            Destroy(transform.gameObject);
+        }
+    }
 }

@@ -26,6 +26,12 @@ public class Projectile : ScriptableObject
         caller.rotation = Quaternion.AngleAxis(angle + rotation, Vector3.forward);
     }
 
+    public virtual void OnHit(Transform other)
+    {
+        GameObject Fire = Instantiate(Resources.Load("Particles/Fire"), other.transform.position, Quaternion.identity) as GameObject;
+        Fire.transform.parent = other.transform;
+    }
+
     private Vector2 Direction(Transform caller)
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

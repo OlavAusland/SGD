@@ -10,8 +10,4 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Book", menuName = "Weapon/Mage/Book")]
 public class Book : Weapon
 {
-    public override void PrimaryAttack(Transform player) 
-    {
-        MonoBehaviour.print("Primary Attack From Book!");
-    }
 }

@@ -21,6 +21,7 @@ public class Ability : ScriptableObject
     public string _name;
     public Sprite icon;
     public AbilityType type;
+    public KeyCode key;
     public float cooldown;
 
 

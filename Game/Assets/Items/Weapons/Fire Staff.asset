@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Fire Staff
   m_EditorClassIdentifier: 
   name: 
-  icon: {fileID: 21300000, guid: 88a9002441efeef40b6e6b0f57388b06, type: 3}
+  icon: {fileID: 21300000, guid: 2050b1849197a4b4f8973e9092c62868, type: 3}
   itemType: 0
   rotationOffset: 0
   classType: 0
-  primary: {fileID: 11400000, guid: 09e9f0348d40fac41b595102fc40569a, type: 2}
-  secondary: {fileID: 0}
+  abilities:
+  - name: Primary
+    key: 323
+    ability: {fileID: 11400000, guid: 09e9f0348d40fac41b595102fc40569a, type: 2}
