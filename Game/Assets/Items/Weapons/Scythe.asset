@@ -24,3 +24,4 @@ MonoBehaviour:
   - name: Secondary
     key: 324
     ability: {fileID: 11400000, guid: 43e1bb18a2b8f4749bb8d7118786f25f, type: 2}
+  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

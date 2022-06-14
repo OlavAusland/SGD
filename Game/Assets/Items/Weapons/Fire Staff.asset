@@ -21,3 +21,4 @@ MonoBehaviour:
   - name: Primary
     key: 323
     ability: {fileID: 11400000, guid: 09e9f0348d40fac41b595102fc40569a, type: 2}
+  material: {fileID: 2100000, guid: 42ee5db672b4fa043bd0f1e327903aa6, type: 2}

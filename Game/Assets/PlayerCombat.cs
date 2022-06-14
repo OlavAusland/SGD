@@ -49,6 +49,7 @@ public class PlayerCombat : MonoBehaviour
             cooldowns.Clear();
             uiAbilities.Clear();
             sr.sprite = weapon.icon;
+            sr.material = weapon.material;
             for(int i = 0; i < weapon.abilities.Count; i++)
             {
                 cooldowns.Add(weapon.abilities[i].ability.cooldown);
@@ -67,6 +68,7 @@ public class PlayerCombat : MonoBehaviour
             foreach(Transform child in uiWeapons){Destroy(child.gameObject);}
             cooldowns.Clear();
             sr.sprite = null;
+            sr.material = null;
         }
     }
 
@@ -96,7 +98,7 @@ public class PlayerCombat : MonoBehaviour
     void Rotate(){
         Vector2 dir = Direction();
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        weaponTransform.rotation = Quaternion.AngleAxis(angle + weapon.rotationOffset, Vector3.forward);
+        weaponTransform.rotation = Quaternion.AngleAxis(angle + weapon.rotationOffset * (int)(sr.flipY ? -1 : 1), Vector3.forward);
     }
     
     //Display The Direction Between Player And Mouse

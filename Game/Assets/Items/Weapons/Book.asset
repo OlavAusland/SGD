@@ -17,4 +17,5 @@ MonoBehaviour:
   itemType: 0
   rotationOffset: 0
   classType: 0
-  ability: {fileID: 0}
+  abilities: []
+  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Cloud Buster
   icon: {fileID: 21300000, guid: 5a6c1c8bfa619144b82f3ef14b408615, type: 3}
   itemType: 0
-  rotationOffset: 0
+  rotationOffset: 45
   classType: 1
   abilities:
   - name: Primary
@@ -24,3 +24,4 @@ MonoBehaviour:
   - name: Secondary
     key: 324
     ability: {fileID: 11400000, guid: bed7f0eb17c4b1942aeacc2b10f16eb8, type: 2}
+  material: {fileID: 2100000, guid: fd425a45bd8c7d841b9c89666414facb, type: 2}

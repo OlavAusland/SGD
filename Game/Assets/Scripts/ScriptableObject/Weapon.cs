@@ -5,6 +5,7 @@ using UnityEngine;
 
 public enum ClassType
 {
+    Any,
     Mage,
     Bruiser,
     Ranger
@@ -30,4 +31,5 @@ public class Weapon : Item
     public ClassType classType;
 
     public List<AbilityDict> abilities;
+    public Material material;
 }
