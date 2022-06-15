@@ -1,3 +1,4 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,16 @@ using UnityEngine.UI;
 
 
 [RequireComponent(typeof(PlayerCombat), typeof(SpriteRenderer))]
-public class PlayerManager : NetworkBehaviour
+public class NetworkPlayerManager : NetworkBehaviour
 {
     public List<GameObject> inventory;
-    public InventoryManager inventoryManager;
+    public InventoryManager inventoryManager { get { return GameObject.Find("UI").GetComponent<InventoryManager>();}}
     SpriteRenderer sr { get { return GetComponent<SpriteRenderer>(); } }
     
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) { ToggleInventory(); }
+        if (isLocalPlayer)
+            if (Input.GetKeyDown(KeyCode.Tab)) { ToggleInventory(); }
     }
 
     public void ToggleInventory(){ 
