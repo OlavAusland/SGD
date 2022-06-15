@@ -25,6 +25,7 @@ public class AbilityDict {
     public Ability ability;
 }
 
+[CreateAssetMenu(menuName = "Weapon/Default")]
 public class Weapon : Item
 {
     public int rotationOffset;

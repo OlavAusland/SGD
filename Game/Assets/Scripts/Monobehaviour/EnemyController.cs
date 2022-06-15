@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -17,7 +19,24 @@ public class EnemyController : MonoBehaviour
     private bool isFacingRight = true;
     public float timeScale = 1.5f;
 
-    private void Start(){LoadValues();}
+    [Header("Health")]
+    public Vector2 offset;
+    Transform healthBar; // Prefab
+    Image healthBarImage;
+    Transform damage;
+
+    private void Start(){Initialize();}
+
+    private void Initialize()
+    {
+        healthBar = Instantiate(Resources.Load<GameObject>("UI/Health"), transform.position, Quaternion.identity).transform;
+        healthBar.SetParent(GameObject.Find("Canvas").transform);
+        healthBar.localScale = new Vector3(1, 1, 1);
+        healthBarImage = healthBar.transform.GetChild(0).GetComponent<Image>();
+
+        // Load Enemy Info
+        LoadValues();
+    }
 
     public void LoadValues()
     {
@@ -28,12 +47,13 @@ public class EnemyController : MonoBehaviour
 
     public void FixedUpdate()
     {
+        healthBar.position = transform.position + (Vector3)offset;
         if(Vector2.Distance(transform.position, path[index].position) <= 0.1f){
             if(index == path.Count - 1){index = 0;}
             else{index++;}
         }
         rb.velocity = Direction(transform.position, path[index].position) * info.speed * Time.deltaTime;
-        if (info.health <= 0){enemy.Die(this.transform);}
+        if (info.health <= 0){Die();}
 
         if(rb.velocity.x > 0 && !isFacingRight){
             isFacingRight = true;
@@ -56,6 +76,21 @@ public class EnemyController : MonoBehaviour
         }
         transform.localScale = new Vector3(1, 1, 1);
         yield return null;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        info.health -= damage;
+        healthBarImage.fillAmount = ((float)info.health / (float)enemy.info.health);
+
+        GameObject GO = Instantiate(Resources.Load<GameObject>("UI/FloatingNumber"), transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        GO.GetComponent<FloatingNumber>().value = damage;
+    }
+
+    private void Die()
+    {
+        enemy.Die(this.transform); 
+        Destroy(healthBar.gameObject);
     }
 
     Vector3 Direction(Vector2 a, Vector2 b){ return (b - a).normalized; }

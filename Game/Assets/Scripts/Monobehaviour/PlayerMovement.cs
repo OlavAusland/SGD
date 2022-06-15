@@ -19,7 +19,17 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 2f;
     private float time;
 
-    public void Update(){FlipSprite();if(Input.GetKeyDown(KeyCode.I)){StartCoroutine(AnimateFlip());}}
+    [Header("Roll Settings")]
+    public float rollForce = 3;
+    public float rollTime = 0.5f;
+    private bool isRolling = false;
+
+
+    public void Update(){
+        if(!isRolling){FlipSprite();}
+        if(rb.velocity.magnitude > 0)
+            if(Input.GetKeyDown(KeyCode.Space) && !isRolling){StartCoroutine(Roll());}
+    }
 
     private void FixedUpdate(){ Movement(); }
 
@@ -40,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     // Move The Player Using Physics
     public void Movement()
     {
+        if(isRolling){return;}
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Input.GetAxisRaw("Vertical") * speed);
 
         if(rb.velocity.magnitude > 0)
@@ -80,6 +91,22 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         transform.localScale = new Vector3(1, 1, 1);
+        yield return null;
+    }
+
+    private IEnumerator Roll() {
+        if(rb.velocity.magnitude <= 0){yield return null;}
+        isRolling = true;
+        float time = rollTime;
+        rb.AddForce(rb.velocity * rollForce, ForceMode2D.Impulse);
+        while(time > 0)
+        {
+            transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, 360 * time / rollTime * (isFacingRight ? 1 : -1));
+            time -= Time.deltaTime * rollTime;
+            yield return new WaitForEndOfFrame();
+        }
+        transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, 0);
+        isRolling = false;
         yield return null;
     }
 

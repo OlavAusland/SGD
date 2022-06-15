@@ -6,6 +6,7 @@ using UnityEngine;
 public enum ItemType {
     Weapon,
     Consumable,
+    Armor,
     Any
 }
 public class Item : ScriptableObject

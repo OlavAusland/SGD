@@ -28,7 +28,7 @@ public class PlayerCombat : MonoBehaviour
     public Transform weaponTransform;
     public List<float> cooldowns = new List<float>();
     public List<UIAbility> uiAbilities = new List<UIAbility>();
-    public Transform uiWeapons;
+    public Transform uiWeapons; //Change Name Does not make sense
 
 
     public void Update()
@@ -77,7 +77,7 @@ public class PlayerCombat : MonoBehaviour
         for(int i = 0; i < weapon.abilities.Count; i++){
             if(cooldowns[i] <= 0)
             {
-                if(Input.GetKeyDown(weapon.abilities[i].key)){
+                if(Input.GetKey(weapon.abilities[i].key)){
                     weapon.abilities[i].ability.Activate(this.transform);
                     cooldowns[i] = weapon.abilities[i].ability.cooldown;
                 }

@@ -1,4 +1,5 @@
-    using System.Collections;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class FireDOT : MonoBehaviour
     {
         while(duration > 0)
         {
-            ec.info.health -= damage;
+            ec.TakeDamage(Random.Range(5, 10));
             yield return new WaitForSeconds(1);
             duration -= 1;
         }
