@@ -24,7 +24,6 @@ public class Ability : ScriptableObject
     public KeyCode key;
     public float cooldown;
 
-
     public virtual void Activate(Transform caller){}
 
     protected Vector2 Direction(Transform center)

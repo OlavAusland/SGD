@@ -50,9 +50,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Distortion: 0.03
+    - _DistortionResolution: -12.95
     - _EnableExternalAlpha: 0
+    - _RotationSpeed: -0.47
     - _Scale: 1
-    - _Speed: 0.5
+    - _Speed: -0.13
     m_Colors:
     - _Color: {r: 0.18867922, g: 0, b: 0.15111822, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

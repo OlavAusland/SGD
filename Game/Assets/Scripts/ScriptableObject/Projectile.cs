@@ -7,9 +7,12 @@ using UnityEngine;
 public class Projectile : ScriptableObject
 {
     public Sprite sprite;
+    public int damage;
     public float speed;
     public float decayTime;
     public float rotation = -90;
+
+    public List<HitEffect> hitEffects;
 
     public virtual IEnumerator Decay(Transform caller)
     {
@@ -28,8 +31,13 @@ public class Projectile : ScriptableObject
 
     public virtual void OnHit(Transform other)
     {
-        GameObject Fire = Instantiate(Resources.Load("Particles/Fire"), other.transform.position, Quaternion.identity) as GameObject;
-        Fire.transform.parent = other.transform;
+        other.GetComponent<EnemyController>().TakeDamage(damage);
+        foreach(HitEffect effect in hitEffects)
+        {
+            effect.Activate(other);
+        }
+        //GameObject Fire = Instantiate(Resources.Load("Particles/Fire"), other.transform.position, Quaternion.identity) as GameObject;
+        //Fire.transform.parent = other.transform;
     }
 
     private Vector2 Direction(Transform caller)

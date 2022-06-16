@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   name: 'Bow '
-  icon: {fileID: 96734266, guid: c58c3cc7ab9a3e24bbc1848f467dd5ff, type: 3}
+  icon: {fileID: -531849096, guid: f4e6ce64104ea2145ae1e2a01ab12fe3, type: 3}
   itemType: 0
   rotationOffset: 0
   classType: 0
   abilities:
   - name: Primary
     key: 323
-    ability: {fileID: 11400000, guid: 09e9f0348d40fac41b595102fc40569a, type: 2}
+    ability: {fileID: 11400000, guid: 6dff09e12d60b2742ab4c9747992f8b5, type: 2}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

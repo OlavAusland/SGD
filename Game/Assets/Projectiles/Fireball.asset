@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: daf6b9e23c8cc104599dc3275dd50348, type: 3}
+  damage: 10
   speed: 10
   decayTime: 5
   rotation: -90
+  hitEffects:
+  - {fileID: 11400000, guid: c0afab3bc1c7dd44b90f6b9ff811a99a, type: 2}
+  - {fileID: 11400000, guid: d7e54edca2f41b34b9a55aa7021f7611, type: 2}

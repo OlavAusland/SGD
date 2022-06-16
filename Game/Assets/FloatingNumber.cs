@@ -9,11 +9,15 @@ public class FloatingNumber : MonoBehaviour
     public float speed = 1;
     public AnimationCurve curve;
     public Color color;
+    public Vector2 spawnOffset;
 
     TextMeshProUGUI text { get{ return GetComponent<TextMeshProUGUI>(); } }
     RectTransform rect { get { return GetComponent<RectTransform>(); } }
 
-    private void Start(){StartCoroutine(Animate());}
+    private void Start(){
+        transform.position += new Vector3(Random.Range(spawnOffset.x, spawnOffset.y), 0, 0);
+        StartCoroutine(Animate());
+    }
 
     public IEnumerator Animate()
     {

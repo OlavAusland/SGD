@@ -162,10 +162,10 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 2
+      time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -173,4 +173,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  color: {r: 1, g: 0.64969105, b: 0, a: 1}
+  color: {r: 1, g: 0.13482335, b: 0, a: 1}
+  spawnOffset: {x: -0.25, y: 0.25}

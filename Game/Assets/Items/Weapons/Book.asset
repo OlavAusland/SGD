@@ -17,5 +17,8 @@ MonoBehaviour:
   itemType: 0
   rotationOffset: 0
   classType: 0
-  abilities: []
+  abilities:
+  - name: Primary
+    key: 323
+    ability: {fileID: 11400000, guid: c5c164f44f02b6549ad5f9a4979a81b0, type: 2}
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

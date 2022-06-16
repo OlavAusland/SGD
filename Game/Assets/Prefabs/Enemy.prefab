@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 2185198570126803020}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,3 +231,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2849c62e55fffbb4a96ebb66c1086be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: b0592f1c0fd6a93419e771cfb6376e9f, type: 2}
+  info:
+    health: 0
+    armor: 0
+    speed: 20
+  path: []
+  moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0022125244
+      value: 1.0038757
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.050430983
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.25
+      inSlope: 0.29745752
+      outSlope: 0.29745752
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: -1.25
+      inSlope: -0.18796451
+      outSlope: -0.18796451
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.020029245
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  timeScale: 3.5
+  offset: {x: 0, y: 0.35}
