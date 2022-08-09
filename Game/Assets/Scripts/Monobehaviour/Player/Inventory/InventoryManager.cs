@@ -1,3 +1,6 @@
+using System.Runtime.Versioning;
+using System;
+using System.Drawing;
 using System.Data;
 using System.Runtime.CompilerServices;
 using System.Diagnostics.Tracing;
@@ -8,7 +11,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public PlayerCombat pc;
     public PlayerManager pm;
@@ -18,6 +21,11 @@ public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public Transform item;
     public Item equippedItem = null;
+    public Item hoveringItem = null;
+
+    // Display Information
+    GameObject itemPreviewPrefab { get { return Resources.Load<GameObject>("UI/ItemPreview"); }}
+    public GameObject itemPreview;
 
 
     private void Start() { Initialize(); }
@@ -36,15 +44,32 @@ public class InventoryManager : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 return true;
             }
         }
-
         return false;
     }
 
-    private void Update() { if (item) { item.position = Input.mousePosition; } EquipItem(); }
+    private void Update() { if (item) { item.position = Input.mousePosition; } EquipItem();}
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // Debug.Log("Cursor Entering " + eventData.pointerEnter.name + " GameObject");
+        if(eventData.pointerEnter)
+        {
+            if(eventData.pointerEnter.transform.CompareTag("InventoryItem"))
+            {
+                hoveringItem = eventData.pointerEnter.transform.parent.GetComponent<InventorySlot>().item;
+                itemPreview = Instantiate(itemPreviewPrefab, Input.mousePosition, Quaternion.identity, eventData.pointerEnter.transform.parent.parent.parent);
+                itemPreview.GetComponent<ItemPreview>().item = hoveringItem;
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        Destroy(itemPreview);itemPreview = null;
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.pointerEnter)
+        if(eventData.pointerEnter)
         {
             if (eventData.pointerEnter.transform.CompareTag("InventoryItem"))
             {

@@ -1,3 +1,4 @@
+using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,9 @@ public class HitEffectSlow : HitEffect
 
     private IEnumerator Slow(Transform other)
     {
-        GameObject GO = Instantiate(Resources.Load<GameObject>("Particles/Ice"), other.position, other.transform.rotation, other.transform);
+        GameObject GO = new GameObject();
+        if(!HasEffect(other, "Ice(Clone)"))
+            GO = Instantiate(Resources.Load<GameObject>("Particles/Ice"), other.position, other.transform.rotation, other.transform);
         EnemyController ec = other.GetComponent<EnemyController>();
 
         float time = length;
@@ -27,5 +30,4 @@ public class HitEffectSlow : HitEffect
         ec.info.speed = speed;
         yield return null;
     }
-
 }

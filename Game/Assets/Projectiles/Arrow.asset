@@ -19,3 +19,4 @@ MonoBehaviour:
   rotation: 0
   hitEffects:
   - {fileID: 11400000, guid: c0afab3bc1c7dd44b90f6b9ff811a99a, type: 2}
+  - {fileID: 11400000, guid: 4c1ebd4bb1c7a9245b2817fd9aadf1e7, type: 2}

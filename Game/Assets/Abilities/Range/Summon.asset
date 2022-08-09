@@ -18,4 +18,4 @@ MonoBehaviour:
   key: 323
   cooldown: 2
   range: 2
-  summon: {fileID: 8482010800616361724, guid: 4f40ffac3fc133e4c9cafbe007575982, type: 3}
+  summon: {fileID: 2347181132947723648, guid: 253df55313c41d44e9b381e2828a9efe, type: 3}

@@ -12,6 +12,8 @@ public enum ItemType {
 public class Item : ScriptableObject
 {
     public string name;
+    [TextArea]
+    public string description; //new
     public Sprite icon;
     public ItemType itemType;
 }

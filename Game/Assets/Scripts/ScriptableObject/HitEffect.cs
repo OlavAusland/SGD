@@ -12,4 +12,11 @@ public class HitEffect : ScriptableObject
     {
         Instantiate(particle, other.position, other.transform.rotation, other.transform);
     }
+
+    protected bool HasEffect(Transform transform, string name){
+        foreach(Transform child in transform.transform)
+            if(child.name == name)
+                return true;
+        return false;
+    }
 }

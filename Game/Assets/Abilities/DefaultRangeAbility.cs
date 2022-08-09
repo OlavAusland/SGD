@@ -16,6 +16,18 @@ public class DefaultRangeAbility : Ability {
             obj.GetComponent<ProjectileManager>().projectile = this.projectile;
             GameObject GO = Instantiate(obj, caller.position, Quaternion.identity);
         }
+
+        // float arc = 10;
+        // int segments = 3;
+        // float angle = Vector2.SignedAngle(Vector2.right, Direction(caller)) - (segments > 1 ? (arc / 2) : 0);
+
+        // for(int i = 0; i < segments; i++, angle += (arc / (segments - 1))){
+        //     Vector3 point = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
+
+        //     GameObject obj = Resources.Load<GameObject>("Projectile");
+        //     obj.GetComponent<ProjectileManager>().projectile = this.projectile;
+        //     GameObject GO = Instantiate(obj, caller.position + point, Quaternion.identity);
+        // }
     }
 
     private Vector2 Direction(Transform caller)

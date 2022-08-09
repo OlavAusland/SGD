@@ -9,7 +9,7 @@ public class PlayerEquipment : MonoBehaviour
     SpriteRenderer sr { get { return GetComponent<SpriteRenderer>(); } }
     public List<InventorySlot> equipment;
     private void Start(){tex = new Texture2D(sr.sprite.texture.width, sr.sprite.texture.height);}
-    public void Update(){if(Input.GetKeyDown(KeyCode.P)){Combine();}}
+    public void Update(){if(Input.GetKeyDown(KeyCode.Tab)){Combine();}}
 
     public void Combine()
     {

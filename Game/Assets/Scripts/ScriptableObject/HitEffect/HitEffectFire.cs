@@ -15,7 +15,9 @@ public class HitEffectFire : HitEffect
 
     public IEnumerator Fire(Transform other)
     {
-        GameObject GO = Instantiate(Resources.Load<GameObject>("Particles/Fire"), other.position, Quaternion.identity, other.transform);
+        GameObject GO = new GameObject();
+        if(!HasEffect(other, "Fire(Clone)"))
+            GO = Instantiate(Resources.Load<GameObject>("Particles/Fire"), other.position, Quaternion.identity, other.transform);
         EnemyController ec = other.GetComponent<EnemyController>();
         float time = length;
         while (time >= 0)

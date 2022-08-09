@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2347181132408805243}
   - component: {fileID: 2347181132408805242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2347181132947723654}
   - component: {fileID: 2347181132947723655}
   - component: {fileID: 5437984031620946736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Knight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -286,3 +286,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   timeScale: 3.5
   offset: {x: 0, y: 0.35}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 384
+  target: {fileID: 0}
+  length: 2

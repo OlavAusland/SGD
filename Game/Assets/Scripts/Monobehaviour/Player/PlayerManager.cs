@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,9 @@ public class PlayerManager : MonoBehaviour
             _health = value;
         }
     }
+    public int armor = 0;
+    public int experience;
+
 
     public void Update()
     {
@@ -38,7 +42,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ToggleInventory(){ 
         foreach(GameObject ui in inventory){
-            //StartCoroutine(AnimateHideUI(ui));
+            // StartCoroutine(AnimateHideUI(ui));
             ui.SetActive(!ui.activeSelf);
         }
     }
@@ -77,5 +81,18 @@ public class PlayerManager : MonoBehaviour
         FloatingNumber number = Instantiate(Resources.Load<GameObject>("UI/FloatingNumber"), transform.position, Quaternion.identity, GameObject.Find("Canvas").transform).GetComponent<FloatingNumber>();
         number.value = value;
         number.color = Color.red;
+    }
+
+    public void OnDrawGizmos() {
+        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        float arc = 45;
+        int segments = 10;
+        float angle = Vector2.SignedAngle(Vector2.right, mouse - (Vector2)transform.position) - (segments > 1 ? (arc / 2) : 0);
+
+        for(int i = 0; i < segments; i++, angle += (arc / (segments - 1))){
+            Vector3 point = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
+            Gizmos.DrawSphere(transform.position + point, 0.1f);
+        }
     }
 }

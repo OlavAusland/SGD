@@ -105,6 +105,6 @@ public class PlayerCombat : MonoBehaviour
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Direction());
+        //Gizmos.DrawRay(transform.position, Direction());
     }
 }
